@@ -59,5 +59,15 @@ The application is split into two main sections:
 
 ### Installation
 
+### Run locally with Docker
+
+1. Clone the repo
 ```bash
+git clone https://github.com/your-username/net-worth-tracker.git
+cd net-worth-tracker
+cp .env.example .env
+docker-compose up -d
 npm install
+npx prisma migrate dev --name init
+npm run dev
+
