@@ -1,0 +1,16 @@
+node_modules
+# Keep environment variables out of version control
+.env
+
+# Next.js
+.next/
+
+/generated/prisma
+/.idea/copilot.data.migration.agent.xml
+/.idea/git_toolbox_prj.xml
+/.idea/modules.xml
+/.idea/Net worth tracker.iml
+/.idea/php.xml
+/prisma/prisma.config.ts
+/prisma/schema.prisma
+/.idea/vcs.xml
