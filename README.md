@@ -68,6 +68,7 @@ cd net-worth-tracker
 cp .env.example .env
 docker-compose up -d
 npm install
+npx prisma generate
 npx prisma migrate dev --name init
 npm run dev
 
