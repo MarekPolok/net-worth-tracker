@@ -24,6 +24,7 @@ export default function NetWorthTable() {
                 setEntries(data);
             } catch (err) {
                 console.error('Failed to fetch entries:', err);
+                setEntries([]);
             } finally {
                 setLoading(false);
             }

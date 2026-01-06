@@ -3,10 +3,21 @@ import { NextResponse } from 'next/server';
 
 // GET all entries
 export async function GET() {
-    const entries = await prisma.netWorthEntry.findMany({
-        orderBy: { date: 'asc' },
-    });
-    return NextResponse.json(entries);
+    try {
+        const entries = await prisma.netWorthEntry.findMany({
+            orderBy: { date: 'asc' },
+        });
+
+        // ALWAYS return valid JSON
+        return NextResponse.json(entries);
+    } catch (error) {
+        console.error('GET /api/net-worth failed:', error);
+
+        return NextResponse.json(
+            { error: 'Failed to fetch net worth entries' },
+            { status: 500 }
+        );
+    }
 }
 
 // POST a new entry
