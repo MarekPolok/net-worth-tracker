@@ -1,25 +1,41 @@
 'use client';
 
 import { useState } from 'react';
-import NetWorthForm from '@/components/NetWorthForm';
 import NetWorthTable from '@/components/NetWorthTable';
+import NetWorthForm from '@/components/NetWorthForm';
+import Modal from '@/components/Modal';
 
 export default function DashboardPage() {
-    const [refresh, setRefresh] = useState(0);
+    const [isOpen, setIsOpen] = useState(false);
+    const [refreshKey, setRefreshKey] = useState(0);
 
-    function handleRefresh() {
-        // trigger table refresh
-        setRefresh((prev) => prev + 1);
+    function handleSuccess() {
+        setIsOpen(false);
+        setRefreshKey((k) => k + 1);
     }
 
     return (
-        <div className="p-4 space-y-8">
-            <h1 className="text-2xl font-bold">Net Worth Tracker</h1>
+        <div className="p-6 space-y-6">
+            <div className="flex justify-between items-center">
+                <h1 className="text-2xl font-bold">Net Worth</h1>
 
-            <NetWorthForm onSuccess={handleRefresh} />
+                <button
+                    onClick={() => setIsOpen(true)}
+                    className="bg-blue-600 text-white px-4 py-2 rounded"
+                >
+                    + Add Entry
+                </button>
+            </div>
 
-            {/* key={refresh} forces NetWorthTable to re-render */}
-            <NetWorthTable key={refresh} />
+            <NetWorthTable key={refreshKey} />
+
+            <Modal
+                isOpen={isOpen}
+                onClose={() => setIsOpen(false)}
+                title="Add Net Worth Entry"
+            >
+                <NetWorthForm onSuccess={handleSuccess} />
+            </Modal>
         </div>
     );
 }
