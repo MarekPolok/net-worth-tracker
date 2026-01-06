@@ -33,6 +33,10 @@ export default function NetWorthTable() {
         fetchEntries();
     }, []);
 
+    function formatDateEU(date: string | Date) {
+        return new Intl.DateTimeFormat('de-DE').format(new Date(date));
+    }
+
     if (loading) return <p>Loading net worth entries...</p>;
     if (!entries.length) return <p>No entries yet.</p>;
 
@@ -55,7 +59,7 @@ export default function NetWorthTable() {
                         <td className="px-4 py-2 border">{entry.id}</td>
                         <td className="px-4 py-2 border">{entry.name}</td>
                         <td className="px-4 py-2 border">{entry.category}</td>
-                        <td className="px-4 py-2 border">{new Date(entry.date).toLocaleDateString()}</td>
+                        <td className="px-4 py-2 border">{formatDateEU(entry.date)}</td>
                         <td className="px-4 py-2 border">{entry.value.toLocaleString()}</td>
                         <td className="px-4 py-2 border">{entry.currency}</td>
                     </tr>
