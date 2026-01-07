@@ -5,6 +5,7 @@ import NetWorthTable from '@/components/NetWorthTable';
 import NetWorthForm from '@/components/NetWorthForm';
 import AnalyticsDashboard from '@/components/AnalyticsDashboard'; // New Import
 import Modal from '@/components/Modal';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function DashboardPage() {
     const [activeTab, setActiveTab] = useState<'table' | 'dashboard'>('dashboard');
@@ -21,7 +22,7 @@ export default function DashboardPage() {
             {/* Header */}
             <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-bold text-gray-800">Wealth Tracker</h1>
-
+                <ThemeToggle />
                 {activeTab === 'table' && (
                     <button
                         onClick={() => setIsOpen(true)}

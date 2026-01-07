@@ -1,10 +1,14 @@
+import { ThemeProvider } from '@/components/ThemeProvider';
 import './globals.css';
-import '@progress/kendo-theme-default/dist/all.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en">
-        <body>{children}</body>
+        <html lang="en" suppressHydrationWarning>
+        <body className="antialiased">
+        <ThemeProvider>
+            {children}
+        </ThemeProvider>
+        </body>
         </html>
     );
 }
