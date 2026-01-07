@@ -34,7 +34,7 @@ export default function NetWorthTable() {
     return (
         <div className="space-y-4">
             {/* Filter Controls */}
-            <div className="flex items-center justify-between bg-gray-50 p-3 rounded-lg border border-gray-200">
+            <div className="flex items-center justify-between  p-3 rounded-lg border border-gray-200">
                 <div className="flex gap-2">
                     {(['ALL', 'ASSET', 'LIABILITY'] as const).map((t) => (
                         <button
@@ -57,21 +57,21 @@ export default function NetWorthTable() {
 
             {/* Table */}
             <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
-                <table className="min-w-full divide-y divide-gray-200 bg-white text-sm">
-                    <thead className="bg-gray-50">
+                <table className="min-w-full divide-y divide-gray-200  text-sm">
+                    <thead>
                     <tr>
-                        <th className="px-4 py-3 text-left font-semibold text-gray-900">Name</th>
-                        <th className="px-4 py-3 text-left font-semibold text-gray-900">Type</th>
-                        <th className="px-4 py-3 text-left font-semibold text-gray-900">Category</th>
-                        <th className="px-4 py-3 text-left font-semibold text-gray-900">Date</th>
-                        <th className="px-4 py-3 text-right font-semibold text-gray-900">Value</th>
+                        <th className="px-4 py-3 text-left font-semibold text-gray-500">Name</th>
+                        <th className="px-4 py-3 text-left font-semibold text-gray-500">Type</th>
+                        <th className="px-4 py-3 text-left font-semibold text-gray-500">Category</th>
+                        <th className="px-4 py-3 text-left font-semibold text-gray-500">Date</th>
+                        <th className="px-4 py-3 text-right font-semibold text-gray-500">Value</th>
                     </tr>
                     </thead>
 
                     <tbody className="divide-y divide-gray-200">
                     {filteredEntries.map((entry) => (
                         <tr key={entry.id} className="hover:bg-gray-50 transition-colors animate-in fade-in duration-300">
-                            <td className="px-4 py-3 font-medium text-gray-900">{entry.name}</td>
+                            <td className="px-4 py-3 font-medium text-gray-500">{entry.name}</td>
                             <td className="px-4 py-3">
                                     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                                         entry.type === 'ASSET' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
