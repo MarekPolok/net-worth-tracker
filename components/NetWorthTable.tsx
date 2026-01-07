@@ -34,7 +34,11 @@ export default function NetWorthTable() {
     }, []);
 
     function formatDateEU(date: string | Date) {
-        return new Intl.DateTimeFormat('de-DE').format(new Date(date));
+        return new Intl.DateTimeFormat('de-DE', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        }).format(new Date(date));
     }
 
     if (loading) return <p>Loading net worth entries...</p>;
