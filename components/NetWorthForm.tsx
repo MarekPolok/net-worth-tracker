@@ -36,33 +36,27 @@ export default function NetWorthForm({onSuccess}: NetWorthFormProps) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Name */}
-            <div className="bg-red-500 p-4 text-white">Hello Tailwind</div>
-
-            <div className="flex flex-col">
-                <label htmlFor="name" className="mb-10 font-medium">
-                    Name
-                </label>
+        <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl">
+            {/* 1. Name Row */}
+            <div className="grid grid-cols-[120px_1fr] items-center gap-4">
+                <label htmlFor="name" className="font-medium text-gray-700">Name</label>
                 <input
                     id="name"
                     name="name"
-                    placeholder="Name"
+                    placeholder="e.g. Savings Account"
                     required
-                    className="input w-40"
+                    className="input w-full border p-2 rounded"
                 />
             </div>
 
-            {/* Category */}
-            <div className="flex flex-col">
-                <label htmlFor="category" className="mb-1 font-medium">
-                    Category
-                </label>
+            {/* 2. Category Row */}
+            <div className="grid grid-cols-[120px_1fr] items-center gap-4">
+                <label htmlFor="category" className="font-medium text-gray-700">Category</label>
                 <select
                     id="category"
                     name="category"
                     required
-                    className="input w-40"
+                    className="input w-full border p-2 rounded bg-white"
                 >
                     <option value="STOCKS">Stocks</option>
                     <option value="BONDS">Bonds</option>
@@ -71,52 +65,56 @@ export default function NetWorthForm({onSuccess}: NetWorthFormProps) {
                 </select>
             </div>
 
-            {/* Date */}
-            <div className="flex flex-col">
-                <label htmlFor="date" className="mb-1 font-medium">
-                    Date
-                </label>
-                <div style={{ width: '150px', display: 'inline-block'}}>
+            {/* 3. Amount Row (Value + Currency Dropdown) */}
+            <div className="grid grid-cols-[120px_1fr] items-center gap-4">
+                <label htmlFor="value" className="font-medium text-gray-700">Amount</label>
+                <div className="flex gap-4">
+                    <input
+                        id="value"
+                        type="number"
+                        step="0.01" // Allows for decimals in financial data
+                        name="value"
+                        placeholder="0.00"
+                        required
+                        className="input flex-1 border p-2 rounded"
+                    />
+                    <select
+                        id="currency"
+                        name="currency"
+                        defaultValue="USD"
+                        className="input w-32 border p-2 rounded bg-white font-semibold"
+                    >
+                        <option value="PLN">PLN</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="JPY">JPY</option>
+                    </select>
+                </div>
+            </div>
+
+            {/* 4. Date Row */}
+            <div className="grid grid-cols-[120px_1fr] items-center gap-4">
+                <label htmlFor="date" className="font-medium text-gray-700">Date</label>
+                <div className="w-full">
                     <DatePicker
                         id="date"
                         value={date}
                         onChange={(e) => setDate(e.value!)}
                         format="dd.MM.yyyy"
-                        style={{ width: '100%' }} // fills wrapper
+                        style={{ width: '100%' }}
                     />
                 </div>
             </div>
 
-            {/* Value */}
-            <div className="flex flex-col">
-                <label htmlFor="value" className="mb-1 font-medium">
-                    Value
-                </label>
-                <input
-                    id="value"
-                    type="number"
-                    name="value"
-                    required
-                    className="input w-32"
-                />
-            </div>
-
-            {/* Currency */}
-            <div className="flex flex-col">
-                <label htmlFor="currency" className="mb-1 font-medium">
-                    Currency
-                </label>
-                <input
-                    id="currency"
-                    name="currency"
-                    defaultValue="USD"
-                    className="input w-32"
-                />
-            </div>
-
-            <div className="flex justify-end gap-2">
-                <button type="submit" disabled={loading} className="btn-primary">
-                    {loading ? 'Saving...' : 'Save'}
+            {/* Submit Button */}
+            <div className="flex justify-end pt-4">
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="px-6 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 disabled:bg-gray-400 transition-colors"
+                >
+                    {loading ? 'Saving...' : 'Save Record'}
                 </button>
             </div>
         </form>
