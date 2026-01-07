@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 @layer base {
-    .dark {
-        --kendo-color-on-surface: #ffffff;
-        --kendo-color-surface: #1f2937;
-        --kendo-color-border: #374151;
+    /* This forces every element to transition background and border changes */
+    * {
+        @apply transition-colors duration-300;
     }
 }

@@ -82,21 +82,21 @@ export default function AnalyticsDashboard() {
         <div className="space-y-8">
             {/* --- SECTION 1: Summary Cards (The "Big Numbers") --- */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="p-6 bg-white rounded-xl border shadow-sm border-l-4 border-l-blue-500">
+                <div className="p-6 rounded-xl border shadow-sm border-l-4 border-l-blue-500">
                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Total Net Worth</p>
-                    <p className={`text-3xl font-bold mt-2 ${netWorth >= 0 ? 'text-gray-900' : 'text-red-600'}`}>
+                    <p className={`text-3xl font-bold mt-2 ${netWorth >= 0 ? 'text-gray-400' : 'text-red-600'}`}>
                         {netWorth.toLocaleString(undefined, { minimumFractionDigits: 2 })} <span className="text-sm font-normal text-gray-400 uppercase">USD</span>
                     </p>
                 </div>
 
-                <div className="p-6 bg-white rounded-xl border shadow-sm border-l-4 border-l-green-500">
+                <div className="p-6  rounded-xl border shadow-sm border-l-4 border-l-green-500">
                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Total Assets</p>
                     <p className="text-3xl font-bold mt-2 text-green-600">
                         {totals.assets.toLocaleString(undefined, { minimumFractionDigits: 2 })} <span className="text-sm font-normal text-gray-400 uppercase">USD</span>
                     </p>
                 </div>
 
-                <div className="p-6 bg-white rounded-xl border shadow-sm border-l-4 border-l-red-500">
+                <div className="p-6  rounded-xl border shadow-sm border-l-4 border-l-red-500">
                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Total Liabilities</p>
                     <p className="text-3xl font-bold mt-2 text-red-600">
                         {totals.liabilities.toLocaleString(undefined, { minimumFractionDigits: 2 })} <span className="text-sm font-normal text-gray-400 uppercase">USD</span>
@@ -106,8 +106,8 @@ export default function AnalyticsDashboard() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
                 {/* PIE CHART: Value Distribution */}
-                <div className="p-6 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
-                    <h3 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase mb-4 tracking-widest transition-colors">
+                <div className="p-6  rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-colors duration-300">
+                    <h3 className="text-sm font-bold text-gray-400 uppercase mb-4 tracking-widest transition-colors">
                         Asset Allocation (Value)
                     </h3>
                     <div className="h-75 w-full">
@@ -146,8 +146,8 @@ export default function AnalyticsDashboard() {
                 </div>
 
                 {/* BAR CHART: Item Frequency */}
-                <div className="p-6 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
-                    <h3 className="text-sm font-bold text-gray-400 dark:text-gray-500 uppercase mb-4 tracking-widest">
+                <div className="p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
+                    <h3 className="text-sm text-gray-400 font-bold uppercase mb-4 tracking-widest">
                         Entry Count by Category
                     </h3>
                     <div className="h-75 w-full">
